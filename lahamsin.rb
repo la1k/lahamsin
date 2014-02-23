@@ -9,7 +9,7 @@ end
 csv_text = File.read(File.join(root, "lahamsin.csv"), :encoding => 'iso-8859-1')
 csv = CSV.parse(csv_text, :headers => true, :col_sep => ";")
 csv.each do |row|
-  if row.to_s.downcase.include? ARGV[0].to_s.downcase
-    puts "#{row[0]} : #{row[1]} : #{row[2]}"
+  if row.to_s.downcase.include? ARGV[0].encode("ISO-8859-1").to_s.downcase
+    puts "#{row[0]} : #{row[1]} : #{row[2]} : #{row[3]} #{row[4]}".encode("UTF-8")
   end
 end
